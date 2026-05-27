@@ -50,7 +50,7 @@ for i in range(num_landmarks):
     dvl_subset = dvl[np.isin(dvl[:,0], ranges_i[:,0])]
     dead_reckoned_subset = dead_reckoned[:-1][np.isin(dvl[:,0], ranges_i[:,0])]
 
-    rel_pos, landmark_est, rel_pos_cov = rel_posns.get_landmarks_srls_gtrs(dead_reckoned_subset, dcm_subset, 0, ranges_i[:,2], ranges_i[:,0], dvl_subset[:,1:3], sigma_r, sigma_theta, Q_dvl)
+    rel_pos, landmark_est, rel_pos_cov = rel_posns.get_landmarks_srls_gtrs(dead_reckoned_subset, dcm_subset, 0, ranges_i[:,2], ranges_i[:,0], dvl_subset[:,1:3], sigma_r, sigma_theta, Q_dvl, use_pdop_weights=True, use_greedy_keypoints=True, num_keypoints=15)
 
     rel_posns_all.append(np.column_stack((ranges_i[:,0], rel_pos)))
     rel_posns_all_cov.append(rel_pos_cov)

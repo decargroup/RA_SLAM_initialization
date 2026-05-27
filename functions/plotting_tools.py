@@ -5,8 +5,8 @@ import numpy as np
 plt.rc("figure", figsize=(11.5, 8.5))
 plt.rc("font", family="Times New Roman", size=20)
 plt.rc("axes", grid=True, labelsize=20)
-plt.rc("text", usetex=True)
-plt.rc("text.latex", preamble=r"\usepackage{amsmath}")
+plt.rc("text", usetex=False)
+#plt.rc("text.latex", preamble=r"\usepackage{amsmath}")
 plt.rc("grid", linestyle="--")
 plt.rcParams["lines.markersize"] = 2
 
@@ -154,6 +154,6 @@ class PlottingTools():
         ax[1].plot(time, error_robot_est[:, 1], label = "Proposed")
         ax[1].fill_between(time[0:len(sigma3)], sigma3[:,1], -sigma3[:,1], color = "lightblue", label=r"$\pm 3 \sigma_2$")
 
-        #ax[0].legend(loc = "lower right")
         ax[1].legend(loc = "lower right")
         plt.tight_layout()
+        plt.show()
